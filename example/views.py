@@ -48,7 +48,7 @@ def getData(request):
     if serializer.is_valid():
         visitor_name = serializer.validated_data['visitor_name']
         ip = get_client_ip(request)
-        coordinate = get_coordinate(request, "5.181.233.166")
+        coordinate = get_coordinate(request, ip)
         city = coordinate["city"]
         lat, log = coordinate["latitude"], coordinate["longitude"]
         temp = weather(request, lat, log)
