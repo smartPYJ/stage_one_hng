@@ -46,7 +46,7 @@ def getInfo(request):
 def getData(request):
     serializer = VisitorName(data=request.GET)
     if serializer.is_valid():
-        visitor_name = serializer.validated_data['visitor_name']
+        visitor_name = (serializer.validated_data['visitor_name']).strip('"') 
         ip = get_client_ip(request)
         coordinate = get_coordinate(request, ip)
         city = coordinate["city"]
